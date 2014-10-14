@@ -1,0 +1,4 @@
+This is a simple memory checking module for C.
+U will have to include my_mem_check.h file in your source program.
+This will help in detecting memory leaks, double free and freeing unallocated pointers.
+I hope someone will find this useful...
