@@ -7,7 +7,7 @@ int main()
 {
 
 	int *p;
-#if 0	
+#if 1	
 	p = malloc(30 * sizeof *p);
 
 	p = malloc(25 * sizeof *p);	

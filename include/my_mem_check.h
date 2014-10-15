@@ -11,5 +11,4 @@ int is_valid_d(void *ptr, int off);
 void *my_malloc_d(size_t size, int line_no);
 void my_free_d(void *ptr, int line_no);
 
-#undef __MY_MEM_CHECK_H
-
+#endif

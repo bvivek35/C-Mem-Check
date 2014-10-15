@@ -1,5 +1,4 @@
 #ifndef __MY_LIST_H
-
 #define __MY_LIST_H
 
 typedef struct __node {
@@ -24,5 +23,4 @@ int is_in_list(const list_t *, const void *);
 int is_empty_list(const list_t *);
 
 void display(const list_t *);
-
-#undef __MY_LIST_H
+#endif
