@@ -2,15 +2,13 @@
 #include <stdlib.h>
 
 #include "my_list.h"
-
 #include "my_mem_check.h"
-
 
 
 list_t *__allocated = 0;
 
-
 void __at_exit();
+
 
 int is_valid_d(void *ptr, int off)
 {
@@ -36,6 +34,7 @@ void my_free_d(void *ptr, int line_no)
 	if (!is_in_list(__allocated, ptr)) {
 		printf("ptr NOT ALLOCATED.\n"
 				"Line : %d\nPTR : %p\n", line_no, ptr);
+		printf("-------------------------------------\n");
 	} else {
 		free(ptr);
 		remove_from_list(__allocated, ptr);
@@ -45,9 +44,9 @@ void my_free_d(void *ptr, int line_no)
 void __at_exit()
 {
 	if (is_empty_list(__allocated)) {
-		printf("All Heap Clear !\n");
+		printf("No Leaks !\n");
 	} else {
-		printf("Leaked : \n\n");
+		printf("Leaked Memory: \n\n");
 		display(__allocated);
 	}
 	
