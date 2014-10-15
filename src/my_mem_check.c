@@ -47,6 +47,7 @@ void __at_exit()
 	if (is_empty_list(__allocated)) {
 		printf("All Heap Clear !\n");
 	} else {
+		printf("Leaked : \n\n");
 		display(__allocated);
 	}
 	
