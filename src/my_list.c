@@ -73,7 +73,7 @@ void display(const list_t *l)
 
 	__node_t *temp;
 	for (temp = l->__head; temp; temp = temp->__link)
-		printf("\t%p\t%zd\n", temp->__ptr, temp->__size);
+		printf("\t%p\t%zd\t%d\n", temp->__ptr, temp->__size, temp->__line_no);
 }
 
 int is_empty_list(const list_t *l)

@@ -6,8 +6,10 @@
 int main()
 {
 	int *p;
-
 #if 1
+	malloc(90);
+#endif
+#if 0
 	free(p);
 #endif
 
