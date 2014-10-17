@@ -16,7 +16,7 @@ int is_valid_d(void *ptr, int off)
 	return 0;	
 }
 
-void *my_malloc_d(size_t size, int line_no)
+void *my_malloc_d(size_t size, int line_no, const char *file)
 {
 	if (!__allocated) {
 		init_list(&__allocated);	
@@ -24,16 +24,16 @@ void *my_malloc_d(size_t size, int line_no)
 	}
 	
 	void *ptr = malloc(size);
-	add_to_list(__allocated, ptr, size, line_no);
+	add_to_list(__allocated, ptr, size, line_no, file);
 	
 	return ptr;
 }
 
-void my_free_d(void *ptr, int line_no)
+void my_free_d(void *ptr, int line_no, const char *file)
 {
 	if (!is_in_list(__allocated, ptr)) {
 		printf("ptr NOT ALLOCATED.\n"
-				"Line : %d\nPTR : %p\n", line_no, ptr);
+			"File : %s\nLine : %d\nPTR : %p\n", file, line_no, ptr);
 		printf("-------------------------------------\n");
 	} else {
 		free(ptr);

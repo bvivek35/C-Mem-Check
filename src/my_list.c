@@ -10,7 +10,8 @@ void init_list(list_t **l)
 	(*l)->__head = 0;
 }
 
-void add_to_list(list_t *l, const void *ptr, size_t size, int line_no)
+void add_to_list(list_t *l, const void *ptr, size_t size, 
+				int line_no, const char *file)
 {
 	if (l == 0)
 		return (void)printf("List Not Initialized !\n");
@@ -21,6 +22,7 @@ void add_to_list(list_t *l, const void *ptr, size_t size, int line_no)
 	temp->__ptr = ptr;
 	temp->__size = size;
 	temp->__line_no = line_no;
+	temp->__file_name = file;
 	temp->__link = l->__head;
 	l->__head = temp;
 }
@@ -73,7 +75,9 @@ void display(const list_t *l)
 
 	__node_t *temp;
 	for (temp = l->__head; temp; temp = temp->__link)
-		printf("\t%p\t%zd\t%d\n", temp->__ptr, temp->__size, temp->__line_no);
+		printf("\t%p\t%zd\t%s\t%d\n", 
+		    temp->__ptr, temp->__size, 
+			temp->__file_name, temp->__line_no);
 }
 
 int is_empty_list(const list_t *l)
