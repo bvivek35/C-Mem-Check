@@ -1,5 +1,5 @@
-#ifndef __MY_MEM_CHECK_H
-#define __MY_MEM_CHECK_H
+#ifndef MY_MEM_CHECK_H
+#define MY_MEM_CHECK_H
 
 #define my_malloc(x) my_malloc_d(x, __LINE__)
 #define my_free(x) my_free_d(x, __LINE__)

@@ -1,5 +1,5 @@
-#ifndef __MY_LIST_H
-#define __MY_LIST_H
+#ifndef MY_LIST_H
+#define MY_LIST_H
 
 typedef struct __node {
 	const void *__ptr;
