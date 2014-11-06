@@ -12,6 +12,7 @@ obj/test.o : tst/test.c
 
 lib/libdetect.a : obj/my_list.o obj/my_mem_check.o
 	ar rcs lib/libdetect.a obj/my_list.o obj/my_mem_check.o
+
 lib : obj/my_list.o obj/my_mem_check.o
 	ar rcs lib/libdetect.a obj/my_list.o obj/my_mem_check.o
 

@@ -15,8 +15,12 @@ To Use :
 3) add the my_mem_check.h file with a include preprocessor directive to your sources.
 
 4) compile your sources.
+	use the options -Dmalloc=my_malloc -Dfree=my_free
+	use -I option to include the path for my_mem_check.h	
+
 	use the libdetect.a while linking(-ldetect)
-	donot forget to provide the library path during linking !	
+	use -L option to specify 
+	
 
 5) the report will be printed at the terminal after the program finishes execution.
 

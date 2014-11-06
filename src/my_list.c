@@ -1,15 +1,26 @@
+/*
+	Implementation Of a Linked List.
+	Handles unallocated list gracefully, so the client need not worry.
+*/
+
 #include <stdio.h>
 #include <stdlib.h>
 
 #include "my_list.h"
 
-
+/*
+	Initializing the list. Could that BE more clear?
+*/
 void init_list(list_t **l)
 {
 	*l = malloc(sizeof**l);
 	(*l)->__head = 0;
 }
 
+/*
+	This adds nodes to the list.
+	To make life simple always add to the beginning of the list.
+*/
 void add_to_list(list_t *l, const void *ptr, size_t size, 
 				int line_no, const char *file)
 {
@@ -24,9 +35,14 @@ void add_to_list(list_t *l, const void *ptr, size_t size,
 	temp->__line_no = line_no;
 	temp->__file_name = file;
 	temp->__link = l->__head;
+
 	l->__head = temp;
 }
 
+/*
+	remove a node from the list given a pointer
+	
+*/
 void remove_from_list(list_t *l, const void *ptr)
 {
 	if (l == 0)
@@ -41,20 +57,23 @@ void remove_from_list(list_t *l, const void *ptr)
 		pres = pres->__link;
 	}
 	
-	if (prev == 0) { //remove first entry
-		if (pres != 0) { //check if there is a first entry
+	if (prev == 0) { 
+		if (pres != 0) { 
 			temp = pres;
 			l->__head = pres->__link;
 			free(temp);
 		}		
-	} else { //middle or end
-		if (pres != 0) { //check for match
+	} else { 
+		if (pres != 0) { 
 			prev->__link = pres->__link;
 			free(pres);
 		}			
 	}
 }
 
+/*
+	Inquires if a given key(pointer) is in the list
+*/
 int is_in_list(const list_t *l, const void *ptr)
 {
 	if (l == 0)
@@ -68,6 +87,9 @@ int is_in_list(const list_t *l, const void *ptr)
 	return 0;
 }
 
+/*
+	Display contents in a neat format
+*/
 void display(const list_t *l)
 {
 	if (l == 0)
@@ -80,11 +102,17 @@ void display(const list_t *l)
 			temp->__file_name, temp->__line_no);
 }
 
+/*
+	Inquires if the list is empty
+*/
 int is_empty_list(const list_t *l)
 {
 	return l == 0 || l->__head == 0;
 }
 
+/*
+	cleaning up the list
+*/
 void cleanup_list(list_t *l)
 {
 	if (l == 0)
