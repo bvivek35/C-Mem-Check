@@ -1,4 +1,23 @@
 This is a simple memory checking module for C.
-U will have to include my_mem_check.h file in your source program.
 This will help in detecting memory leaks, double free and freeing unallocated pointers.
+
+NOTE : This will run on unix. I cannot promise support for windows.
+
+To Use :
+
+1) setup the required folders using the configure script
+	use :
+		./configure.sh
+
+2) compile the library(static lib now)
+	use :
+		make lib
+3) add the my_mem_check.h file with a include preprocessor directive to your sources.
+
+4) compile your sources.
+	use the libdetect.a while linking(-ldetect)
+	donot forget to provide the library path during linking !	
+
+5) the report will be printed at the terminal after the program finishes execution.
+
 I hope someone will find this useful...
