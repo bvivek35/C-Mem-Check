@@ -1,4 +1,4 @@
-all : obj/test.o lib/libdetect.a 
+bin/test : obj/test.o lib/libdetect.a 
 	gcc obj/test.o -Llib -o bin/test -ldetect
 
 obj/my_list.o : src/my_list.c

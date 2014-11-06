@@ -23,5 +23,30 @@ To Use :
 	
 
 5) the report will be printed at the terminal after the program finishes execution.
+--------------------------------------------------------------------------------------------
+Note On gcc Compiler Options....
 
-I hope someone will find this useful...
+-I option :
+		add a header file search path.
+		Eg. if header is /home/us/headers/example.h
+		use "-I/home/us/headers" as option without quotes
+		
+		compiling :
+		use -c option to get the object file. this needs to be linked with libraries to produce an executable.
+		
+		add macros :
+		use -D option 
+			-Dmac_name=mac_expansion
+		In the project compiling client files, substitute malloc with my_malloc and free with my_free using 
+		"-Dmalloc=my_malloc" and "-Dfree=my_free" respectively(no quotes)	
+		Linking :
+			Adding library search path using -L option
+			Eg. If library is /home/ex/lib/libexample.a
+			
+			use -L/home/ex/lib to add the directory
+			use -lexample at the end to actually use the library
+			Convention used is l(ib)example(.a)
+			
+------------------------------------------------------------------------------------------
+
+

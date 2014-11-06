@@ -1,3 +1,2 @@
-1) Fix makefile
-2) Implement is_valid function.
-3) Implement a deref function that will do the deref. It will step over the line   if the deref will cause a crash that this module can detect.
+1) Implement is_valid function.
+2) Implement a deref function that will do the deref. It will step over the line   if the deref will cause a crash that this module can detect.

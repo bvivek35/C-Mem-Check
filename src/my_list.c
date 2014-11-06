@@ -9,7 +9,7 @@
 #include "my_list.h"
 
 /*
-	Initializing the list. Could that BE more clear?
+	Initializing the list.
 */
 void init_list(list_t **l)
 {
