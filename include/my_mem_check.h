@@ -12,6 +12,10 @@
 		Later on the preprocessor will expand the below macros that will contain line no and other useful information.
 */
 
+#if defined(ADD_HOOKS)
+	#define malloc my_malloc
+	#define free my_free
+#endif
 #define my_malloc(x) my_malloc_d(x, __LINE__, __FILE__)
 #define my_free(x) my_free_d(x, __LINE__, __FILE__)
 

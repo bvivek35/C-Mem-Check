@@ -1,20 +1,28 @@
-bin/test : obj/test.o lib/libdetect.a 
-	gcc obj/test.o -Llib -o bin/test -ldetect
+CC := gcc
 
-obj/my_list.o : src/my_list.c
-	gcc -c src/my_list.c -Iinclude -o obj/my_list.o
+LIB_SRCDIR := src
+LIB_OBJDIR := obj
+LIBDIR := lib
 
-obj/my_mem_check.o : src/my_mem_check.c
-	gcc -c 	src/my_mem_check.c -Iinclude -o obj/my_mem_check.o
+INCL := -Iinclude/
+CFLAGS := 
+DEFINES :=
 
-obj/test.o : tst/test.c
-	gcc -c tst/test.c -Iinclude -o obj/test.o -Dmalloc=my_malloc -Dfree=my_free
 
-lib/libdetect.a : obj/my_list.o obj/my_mem_check.o
-	ar rcs lib/libdetect.a obj/my_list.o obj/my_mem_check.o
+LIB_SRCS := $(wildcard src/*.c)
+LIB_OBJS := $(subst src, obj, $(LIB_SRCS))
+LIB_OBJS := $(patsubst %.c, %.o, $(LIB_OBJS))
 
-lib : obj/my_list.o obj/my_mem_check.o
-	ar rcs lib/libdetect.a obj/my_list.o obj/my_mem_check.o
+LIB := libdetect.a 
+
+test : tst/test.c lib
+	$(CC) $(INCL) -DADD_HOOKS $(CFLAGS) tst/test.c -L$(LIBDIR) -o bin/test -ldetect
+
+lib : $(LIB_OBJS)
+	ar rcs $(LIBDIR)/$(LIB) $^
+ 
+$(LIB_OBJDIR)/%.o : $(LIB_SRCDIR)/%.c
+	$(CC) $(CFLAGS) $(INCL) -c $< -o $@  
 
 clean : 
-	rm -f */*.o bin/* lib/*
+	rm -rf bin/* obj/* lib/* a.out *.o
