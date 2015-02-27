@@ -1,8 +1,8 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-#include "my_list.h"
-#include "my_mem_check.h"
+#include "list.h"
+#include "mem_check.h"
 
 /*
 	Global variables :
@@ -37,6 +37,19 @@ void *my_malloc_d(size_t size, int line_no, const char *file)
 	
 	void *ptr = malloc(size);
 	add_to_list(__allocated, ptr, size, line_no, file);
+	
+	return ptr;
+}
+
+void *my_calloc_d(size_t count, size_t size, int line_no, const char *file)
+{
+	if (!__allocated) {
+		init_list(&__allocated);
+		atexit(__at_exit);
+	}
+	
+	void *ptr = calloc(count, size);
+	add_to_list(__allocated, ptr, count * size, line_no, file);
 	
 	return ptr;
 }

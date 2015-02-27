@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-#include "my_mem_check.h"
+#include "mem_check.h"
 
 int main()
 {
@@ -15,9 +15,10 @@ int main()
 
 	
 #if 1
-	malloc(90);
+	free(calloc(20, 90));
+	calloc(20, sizeof *p);
 #endif
-#if 1
+#if 0
 	free(p);
 #endif
 

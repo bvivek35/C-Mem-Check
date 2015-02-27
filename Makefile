@@ -15,8 +15,8 @@ LIB_OBJS := $(patsubst %.c, %.o, $(LIB_OBJS))
 
 LIB := libdetect.a 
 
-test : tst/test.c lib
-	$(CC) $(INCL) -DADD_HOOKS $(CFLAGS) tst/test.c -L$(LIBDIR) -o bin/test -ldetect
+test1 : tst/test1.c lib
+	$(CC) $(INCL) -DHOOK_ALL $(CFLAGS) tst/test1.c -L$(LIBDIR) -o bin/test1 -ldetect
 
 lib : $(LIB_OBJS)
 	ar rcs $(LIBDIR)/$(LIB) $^
