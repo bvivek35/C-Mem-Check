@@ -14,7 +14,7 @@ int main()
 #endif
 
 	
-#if 1
+#if 0
 	free(calloc(20, 90));
 	calloc(20, sizeof *p);
 #endif
@@ -45,6 +45,12 @@ int main()
 #if 0	
 	p = calloc(10, sizeof *p);
 #endif	
+
+#if 1
+	p = malloc(10 * sizeof(int));
+	printf("is_valid : %d\n", is_valid(p));
+	free(p);
+#endif
 
 	return 0;
 }

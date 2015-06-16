@@ -17,8 +17,7 @@ void __at_exit();
 
 int is_valid_d(void *ptr, int off)
 {
-	//TO-DO
-	return 0;	
+	return range_in_list(__allocated, ptr, off);	
 }
 
 /*

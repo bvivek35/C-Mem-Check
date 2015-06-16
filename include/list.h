@@ -40,16 +40,17 @@ typedef struct __list {
 		
 		Displaying the list
 */
-void init_list(list_t **);
-void cleanup_list(list_t *);
+void init_list(list_t **list_ptr);
+void cleanup_list(list_t *l);
 
-void add_to_list(list_t *, const void *, size_t __size, 
-			int __line_no, const char *__file_name);
-void remove_from_list(list_t *, const void *);
+void add_to_list(list_t *l, const void *ptr, size_t size, 
+			int line_no, const char *file_name);
+void remove_from_list(list_t *l, const void *ptr);
 
-int is_in_list(const list_t *, const void *);
-int is_empty_list(const list_t *);
+int range_in_list(const list_t *l, const void *ptr, size_t offset);
+int is_in_list(const list_t *l, const void *ptr);
+int is_empty_list(const list_t *l);
 
-void display(const list_t *);
+void display(const list_t *l);
 
 #endif
